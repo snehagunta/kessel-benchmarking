@@ -3,3 +3,4 @@ bench-app
 .idea/
 .DS_Store
 pgdata/
+/results/

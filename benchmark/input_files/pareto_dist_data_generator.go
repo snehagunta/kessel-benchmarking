@@ -3,12 +3,13 @@ package input_files
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/google/uuid"
 	"math/rand"
 	"os"
 	"sort"
 	"strconv"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type idCountPair struct {
@@ -90,7 +91,7 @@ func GenerateZipfIDsWithModuloCategory(n int, zipfMax uint64, modBase uint64, s,
 	for i := 0; i < n; i++ {
 		raw := zipf.Uint64()
 		modID := raw % modBase
-		idStr := "id-" + strconv.FormatUint(modID, 10)
+		idStr := "id-" + strconv.FormatUint(raw, 10)
 		fmt.Println(idStr)
 		counts[idStr]++
 
@@ -100,7 +101,7 @@ func GenerateZipfIDsWithModuloCategory(n int, zipfMax uint64, modBase uint64, s,
 		record := Record{
 			ResourceType:       "host",
 			ReporterInstanceID: "abc",
-			LocalResourceID:    strconv.FormatUint(modID, 10),
+			LocalResourceID:    strconv.FormatUint(raw, 10),
 			APIHref:            "www.example.com",
 			ConsoleHref:        "www.example.com",
 			ReporterVersion:    "123.2",
